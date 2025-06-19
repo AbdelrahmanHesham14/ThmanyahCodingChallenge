@@ -51,10 +51,10 @@ class SearchViewModel @Inject constructor(
 
     private fun observeSearchQuery() {
         uiState
-            .map { it.query }
+            .map { it.query.trim() }
             .debounce(200)
             .filter { query ->
-                return@filter query.isNotBlank() && query.length >= 3
+                return@filter query.trim().isNotBlank() && query.trim().length >= 3
             }
             .distinctUntilChanged()
             .mapLatest { query ->
