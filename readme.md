@@ -5,8 +5,6 @@
 ### Flow
 This app uses MVI architecture.
 
-<img src="https://miro.medium.com/max/1400/1*3u5JnmqONR4UnwRE6tEV3Q.png" width="500">
-
 ### Modules
 Modules are the collection of source files and build settings that allow you to divide your project into discrete units of functionality.
 
