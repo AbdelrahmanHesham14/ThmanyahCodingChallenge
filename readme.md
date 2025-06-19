@@ -67,6 +67,7 @@ Each module has its own test.
   * [Hilt Test](https://developer.android.com/training/dependency-injection/hilt-testing)
 
 ### Future work
+- UI Refinements: Further improve the user interface based on detailed UI/UX design guidelines to align with modern design standards and deliver a more polished, user-friendly experience.
 - Improve UI test coverage and structure for better reliability and maintainability.
 - Refine modularization by clarifying module responsibilities and reducing unnecessary dependencies between modules.
 - Implement offline support by enabling local persistence for movies and offers using the `:local` module (e.g., Room or DataStore).

@@ -1,5 +1,6 @@
 package com.thmanyah.presentation.home
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,8 +24,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.thmanyah.domain.model.SectionType
 import com.thmanyah.presentation.composable.BigSquareSection
@@ -66,6 +69,7 @@ fun HomeScreen(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
+                modifier = Modifier.shadow(8.dp),
                 title = {
                     Text(text = "Home Screen")
                 },
@@ -98,7 +102,8 @@ fun HomeScreen(
                     state = listState,
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(padding)
+                        .padding(padding),
+                    contentPadding = PaddingValues(bottom = 20.dp)
                 ) {
                     items(sections, key = { it.id }) { section ->
                         SectionTitle(title = section.title)
