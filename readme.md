@@ -69,5 +69,5 @@ Each module has its own test.
 ### Future work
 - UI Refinements: Further improve the user interface based on detailed UI/UX design guidelines to align with modern design standards and deliver a more polished, user-friendly experience.
 - Improve UI test coverage and structure for better reliability and maintainability.
-- Refine modularization by clarifying module responsibilities and reducing unnecessary dependencies between modules.
+- Refine modularization by defining clear module responsibilities, reducing inter-module dependencies, and creating feature-specific presentation and data modules for better scalability.
 - Implement offline support by enabling local persistence for movies and offers using the `:local` module (e.g., Room or DataStore).
