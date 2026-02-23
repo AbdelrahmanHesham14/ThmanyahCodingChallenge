@@ -2,12 +2,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.thmanyah.presentation"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -33,21 +34,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     kotlin {
         jvmToolchain(17)
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
-    }
-    kapt {
-        correctErrorTypes = true
     }
 }
 
@@ -58,9 +49,11 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(libs.coil.compose)
+    implementation(libs.androidx.material3)
+    implementation(libs.material.icons.extended)
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.core.testing)
@@ -73,6 +66,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     androidTestImplementation(libs.hilt.android.testing)
-    kaptAndroidTest(libs.hilt.compiler)
+    kspAndroidTest(libs.hilt.compiler)
 
 }

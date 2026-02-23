@@ -2,17 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.thmanyah.codingchallenge"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.thmanyah.codingchallenge"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -36,10 +36,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     kotlin {
         jvmToolchain(17)
     }
@@ -59,5 +55,5 @@ dependencies {
 
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 }

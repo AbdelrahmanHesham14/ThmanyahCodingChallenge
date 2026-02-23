@@ -2,12 +2,12 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.thmanyah.remote"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -30,10 +30,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     kotlin {
         jvmToolchain(17)
     }
@@ -45,15 +41,14 @@ dependencies {
     implementation(project(":data"))
 
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi.converter)
     implementation(libs.okhttp.logging)
 
     implementation(libs.moshi)
-    implementation(libs.moshi.kotlin)
-    kapt(libs.moshi.codegen)
+    ksp(libs.moshi.codegen)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

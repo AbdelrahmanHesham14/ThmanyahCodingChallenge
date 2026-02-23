@@ -3,19 +3,14 @@ package com.thmanyah.presentation
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.thmanyah.presentation.composable.SectionTitle
-import com.thmanyah.presentation.main.MainActivity
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.thmanyah.presentation.search.SearchScreen
-import com.thmanyah.presentation.search.SearchViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dagger.hilt.android.testing.UninstallModules
 import org.junit.Rule
 import org.junit.Test
 

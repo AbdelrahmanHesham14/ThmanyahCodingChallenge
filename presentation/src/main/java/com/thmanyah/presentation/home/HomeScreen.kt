@@ -28,7 +28,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.thmanyah.domain.model.SectionType
 import com.thmanyah.presentation.composable.BigSquareSection
 import com.thmanyah.presentation.composable.GridSection

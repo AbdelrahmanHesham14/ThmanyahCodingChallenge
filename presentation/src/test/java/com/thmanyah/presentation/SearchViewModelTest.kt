@@ -66,14 +66,14 @@ class SearchViewModelTest {
             // When && Assertions
             searchViewModel.uiState.test {
                 // Expect Idle from initial state
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State())
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State())
                 // Send Query
                 searchViewModel.setEvent(SearchContract.Event.SearchData("Test1"))
                 // Expect Loading and query
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State(query = "Test1"))
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State(query = "Test1", loading = true))
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State(query = "Test1"))
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State(query = "Test1", loading = true))
                 // Expect Success
-                val expected = expectItem()
+                val expected = awaitItem()
                 Truth.assertThat(expected).isEqualTo(
                     SearchContract.State(sections = sections, query = "Test1")
                 )
@@ -102,14 +102,14 @@ class SearchViewModelTest {
             // When && Assertions
             searchViewModel.uiState.test {
                 // Expect Idle from initial state
-                Truth.assertThat(expectItem()).isEqualTo(
+                Truth.assertThat(awaitItem()).isEqualTo(
                     SearchContract.State()
                 )
                 // Send Query
                 searchViewModel.setEvent(SearchContract.Event.SearchData("Test1"))
                 // Expect Loading and query
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State(query = "Test1"))
-                Truth.assertThat(expectItem())
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State(query = "Test1"))
+                Truth.assertThat(awaitItem())
                     .isEqualTo(SearchContract.State(query = "Test1", loading = true))
                 //Cancel and ignore remaining
                 cancelAndIgnoreRemainingEvents()
@@ -118,7 +118,7 @@ class SearchViewModelTest {
             // When && Assertions (UiEffect)
             searchViewModel.effect.test {
                 // Expect ShowError Effect
-                val expected = expectItem()
+                val expected = awaitItem()
                 val expectedData = (expected as SearchContract.Effect.ShowError).message
                 Truth.assertThat(expected).isEqualTo(
                     SearchContract.Effect.ShowError("error string")
@@ -147,17 +147,17 @@ class SearchViewModelTest {
             // When && Assertions
             searchViewModel.uiState.test {
                 // Expect Idle from initial state
-                Truth.assertThat(expectItem()).isEqualTo(
+                Truth.assertThat(awaitItem()).isEqualTo(
                     SearchContract.State()
                 )
                 // Send Query
                 searchViewModel.setEvent(SearchContract.Event.SearchData("Test"))
                 // Expect Loading and query
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State(query = "Test"))
-                Truth.assertThat(expectItem())
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State(query = "Test"))
+                Truth.assertThat(awaitItem())
                     .isEqualTo(SearchContract.State(query = "Test", loading = true))
                 // Expect Success
-                val expected = expectItem()
+                val expected = awaitItem()
                 Truth.assertThat(expected).isEqualTo(
                     SearchContract.State(
                         sections = sections,
@@ -177,12 +177,12 @@ class SearchViewModelTest {
                 // Send Query
                 searchViewModel.setEvent(SearchContract.Event.SearchData("Test1"))
                 // Expect Loading and query
-                Truth.assertThat(expectItem()).isEqualTo(SearchContract.State(query = "Test1", sections))
-                Truth.assertThat(expectItem())
+                Truth.assertThat(awaitItem()).isEqualTo(SearchContract.State(query = "Test1", sections))
+                Truth.assertThat(awaitItem())
                     .isEqualTo(SearchContract.State(query = "Test1", loading = true, sections = sections))
 
                 // Expect Success
-                val expectedPageTwo = expectItem()
+                val expectedPageTwo = awaitItem()
                 Truth.assertThat(expectedPageTwo).isEqualTo(
                     SearchContract.State(
                         sections = sections2,
@@ -221,7 +221,7 @@ class SearchViewModelTest {
         searchViewModel.event.test {
             searchViewModel.setEvent(SearchContract.Event.BackClicked)
 
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 SearchContract.Event.BackClicked
             )
             // Cancel and ignore remaining
@@ -229,7 +229,7 @@ class SearchViewModelTest {
         }
 
         searchViewModel.effect.test {
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 SearchContract.Effect.NavigateBack
             )
             cancelAndIgnoreRemainingEvents()

@@ -62,11 +62,11 @@ class HomeViewModelTest {
         // When && Assertions
         homeViewModel.uiState.test {
             // Expect Idle from initial state
-            Truth.assertThat(expectItem()).isEqualTo(HomeContract.State())
+            Truth.assertThat(awaitItem()).isEqualTo(HomeContract.State())
             // Expect Loading
-            Truth.assertThat(expectItem()).isEqualTo(HomeContract.State(loading = true))
+            Truth.assertThat(awaitItem()).isEqualTo(HomeContract.State(loading = true))
             // Expect Success
-            val expected = expectItem()
+            val expected = awaitItem()
             Truth.assertThat(expected).isEqualTo(
                 HomeContract.State(sections = sections)
             )
@@ -98,11 +98,11 @@ class HomeViewModelTest {
         // When && Assertions
         homeViewModel.uiState.test {
             // Expect Idle from initial state
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State()
             )
             // Expect Loading
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State(
                     loading = true
                 )
@@ -114,7 +114,7 @@ class HomeViewModelTest {
         // When && Assertions (UiEffect)
         homeViewModel.effect.test {
             // Expect ShowError Effect
-            val expected = expectItem()
+            val expected = awaitItem()
             val expectedData = (expected as HomeContract.Effect.ShowError).message
             Truth.assertThat(expected).isEqualTo(
                 HomeContract.Effect.ShowError("error string")
@@ -140,17 +140,17 @@ class HomeViewModelTest {
         // When && Assertions
         homeViewModel.uiState.test {
             // Expect Idle from initial state
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State()
             )
             // Expect Loading
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State(
                     loading = true
                 )
             )
             // Expect Success
-            val expected = expectItem()
+            val expected = awaitItem()
             Truth.assertThat(expected).isEqualTo(
                 HomeContract.State(
                     sections = sections
@@ -188,17 +188,17 @@ class HomeViewModelTest {
         // When && Assertions
         homeViewModel.uiState.test {
             // Expect Idle from initial state
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State()
             )
             // Expect Loading
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State(
                     loading = true
                 )
             )
             // Expect Success
-            val expected = expectItem()
+            val expected = awaitItem()
             Truth.assertThat(expected).isEqualTo(
                 HomeContract.State(
                     sections = sections
@@ -217,7 +217,7 @@ class HomeViewModelTest {
             homeViewModel.setEvent(HomeContract.Event.LoadMoreData)
 
             // Expect load more state
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.State(
                     sections = sections,
                     loadingMore = true
@@ -225,7 +225,7 @@ class HomeViewModelTest {
             )
 
             // Expect Success
-            val expectedPageTwo = expectItem()
+            val expectedPageTwo = awaitItem()
             Truth.assertThat(expectedPageTwo).isEqualTo(
                 HomeContract.State(
                     sections = Paging(
@@ -272,13 +272,13 @@ class HomeViewModelTest {
 
         // When && Assertions
         homeViewModel.event.test {
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.Event.FetchData
             )
 
             homeViewModel.setEvent(HomeContract.Event.SearchClicked)
 
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.Event.SearchClicked
             )
             // Cancel and ignore remaining
@@ -286,7 +286,7 @@ class HomeViewModelTest {
         }
 
         homeViewModel.effect.test {
-            Truth.assertThat(expectItem()).isEqualTo(
+            Truth.assertThat(awaitItem()).isEqualTo(
                 HomeContract.Effect.NavigateToSearchScreen
             )
             cancelAndIgnoreRemainingEvents()
