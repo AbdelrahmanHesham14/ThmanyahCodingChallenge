@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.material.icons.extended)
 
     implementation(libs.hilt.android)
+    debugImplementation(libs.androidx.ui.tooling)
     ksp(libs.hilt.compiler)
 
     testImplementation(libs.kotlinx.coroutines.test)
