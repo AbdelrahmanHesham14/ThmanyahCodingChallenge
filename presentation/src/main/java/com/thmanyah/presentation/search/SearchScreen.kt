@@ -113,7 +113,7 @@ fun SearchScreen(
                         items(
                             sections,
                             key = { section -> section.id },
-                            contentType = { section -> section.contentType }
+                            contentType = { section -> section.type }
                         ) { section ->
                             SectionTitle(title = section.title)
                             when (section.type) {

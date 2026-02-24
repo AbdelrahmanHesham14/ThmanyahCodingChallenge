@@ -107,7 +107,7 @@ fun HomeScreen(
                         .padding(padding),
                     contentPadding = PaddingValues(bottom = 20.dp)
                 ) {
-                    items(sections, key = { it.id }, contentType = { it.contentType }) { section ->
+                    items(sections, key = { it.id }, contentType = { it.type }) { section ->
                         SectionTitle(title = section.title)
                         when (section.type) {
                             SectionType.QUEUE -> QueueSection(items = section.items)
