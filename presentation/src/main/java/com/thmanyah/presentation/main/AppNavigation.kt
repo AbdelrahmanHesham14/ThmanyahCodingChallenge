@@ -1,6 +1,5 @@
 package com.thmanyah.presentation.main
 
-import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
@@ -16,7 +15,7 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = "home",
+        startDestination = AppDestination.Home.route,
         enterTransition = {
             slideInHorizontally { it }
         },
@@ -30,12 +29,12 @@ fun AppNavigation() {
             slideOutHorizontally { it }
         }
     ) {
-        composable("home") {
+        composable(AppDestination.Home.route) {
             HomeScreen {
-                navController.navigate("search")
+                navController.navigate(AppDestination.Search.route)
             }
         }
-        composable("search") {
+        composable(AppDestination.Search.route) {
             SearchScreen {
                 navController.popBackStack()
             }
