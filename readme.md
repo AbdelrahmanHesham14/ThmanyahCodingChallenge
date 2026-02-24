@@ -10,7 +10,7 @@ Modules are the collection of source files and build settings that allow you to 
 
 - **App Module**
 
-  `:app` module is an [com.android.application](https://developer.android.com/studio/projects/android-library), which is needed to create the app bundle. It contains dependency graph and UI related classes. It presents data to screen and handle user interactions.
+  `:app` module is an [com.android.application](https://developer.android.com/studio/projects/android-library), which is needed to create the app bundle.
 
 - **Base Module**
 
@@ -38,7 +38,7 @@ Modules are the collection of source files and build settings that allow you to 
 
 - **Presentation Module**
 
-  `:presentation` module contains business logic
+  `:presentation` module contains UI related classes and view models. It presents data to screen and handle user interactions.
 
 Each module has its own test.
 
@@ -46,6 +46,7 @@ Each module has its own test.
 - [Kotlin](https://kotlinlang.org)
 - [Jetpack](https://developer.android.com/jetpack)
   * [Compose](https://developer.android.com/jetpack/compose)
+  * [Compose Navigation](https://developer.android.com/develop/ui/compose/navigation)
   * [Android KTX](https://developer.android.com/kotlin/ktx)
   * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)

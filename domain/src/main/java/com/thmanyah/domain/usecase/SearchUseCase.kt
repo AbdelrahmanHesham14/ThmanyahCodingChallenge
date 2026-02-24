@@ -4,7 +4,7 @@ import com.thmanyah.domain.model.Section
 import com.thmanyah.domain.repository.SectionRepository
 import javax.inject.Inject
 
-class SearchUseCase @Inject constructor(
+class SearchUseCase(
     private val sectionRepository: SectionRepository
 ) {
 
