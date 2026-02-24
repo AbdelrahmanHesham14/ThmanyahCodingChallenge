@@ -110,7 +110,11 @@ fun SearchScreen(
                         modifier = Modifier
                             .fillMaxHeight(1f)
                     ) {
-                        items(sections, key = { it.id }) { section ->
+                        items(
+                            sections,
+                            key = { section -> section.id },
+                            contentType = { section -> section.contentType }
+                        ) { section ->
                             SectionTitle(title = section.title)
                             when (section.type) {
                                 SectionType.QUEUE -> QueueSection(items = section.items)

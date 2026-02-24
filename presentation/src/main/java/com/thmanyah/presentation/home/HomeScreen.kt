@@ -55,7 +55,9 @@ fun HomeScreen(
         viewModel.effect.collect { effect ->
             when (effect) {
                 is HomeContract.Effect.ShowError -> {
-                    snackbarHostState.showSnackbar(effect.message ?: "Something went wrong. Please try again later")
+                    snackbarHostState.showSnackbar(
+                        effect.message ?: "Something went wrong. Please try again later"
+                    )
                 }
 
                 HomeContract.Effect.NavigateToSearchScreen -> {
@@ -105,7 +107,7 @@ fun HomeScreen(
                         .padding(padding),
                     contentPadding = PaddingValues(bottom = 20.dp)
                 ) {
-                    items(sections, key = { it.id }) { section ->
+                    items(sections, key = { it.id }, contentType = { it.contentType }) { section ->
                         SectionTitle(title = section.title)
                         when (section.type) {
                             SectionType.QUEUE -> QueueSection(items = section.items)
